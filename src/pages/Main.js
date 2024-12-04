@@ -1,28 +1,18 @@
-import {
-  useGetRecipesQuery,
-  useGetRecipeInfoQuery,
-} from "../slices/fetchDataSlice";
-import RecipeHeroCard from "../components/RecipeHeroCard";
+import Discover from "../components/Discover";
+import Categories from "../components/Categories";
+import Trending from "../components/Trending";
+import Pantry from "../components/Pantry";
+import Footer from "../components/Footer";
 
 export default function Main() {
-  const { data, error, isLoading } = useGetRecipesQuery({
-    number: 4,
-    type: "chicken",
-  });
-
-  const idList = data?.results.map((recipe) => recipe.id);
-  const { data: recipeInfoData } = useGetRecipeInfoQuery(idList);
-  console.log(recipeInfoData);
-
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      <div className="flex flex-wrap justify-center">
-        {recipeInfoData?.map((recipe) => (
-          <RecipeHeroCard key={recipe.id} recipeInfoData={recipe} />
-        ))}
-      </div>
+      <h1 className="text-4xl text-center mt-10">Welcome to the Recipe App</h1>
+      <Discover />
+      <Categories />
+      <Trending />
+      <Pantry />
+      <Footer />
     </div>
   );
 }
