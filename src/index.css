@@ -11,3 +11,12 @@ body {
   background-color: #f7dba7;
   scale: 50%;
 }
+
+.category-card {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
+}
+
+.swiper-wrapper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
