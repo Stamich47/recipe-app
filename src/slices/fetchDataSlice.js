@@ -14,7 +14,14 @@ export const recipeApi = createApi({
       query: (idList) =>
         `/recipes/informationBulk?ids=${idList}&apiKey=${apiKey}`,
     }),
+    getDiscoverRecipe: builder.query({
+      query: () => `/recipes/random?apiKey=${apiKey}&number=1`,
+    }),
   }),
 });
 
-export const { useGetRecipesQuery, useGetRecipeInfoQuery } = recipeApi;
+export const {
+  useGetRecipesQuery,
+  useGetRecipeInfoQuery,
+  useGetDiscoverRecipeQuery,
+} = recipeApi;
