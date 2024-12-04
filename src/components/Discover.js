@@ -10,7 +10,7 @@ export default function Discover() {
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {data && (
-          <div className="relative w-full max-w-xs overflow-hidden rounded-lg shadow-lg">
+          <div className="relative w-full max-w-sm overflow-hidden rounded-lg discover-img">
             <img
               src={data.recipes[0].image}
               alt={data.recipes[0].title}

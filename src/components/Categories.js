@@ -42,7 +42,7 @@ export default function Categories() {
       >
         {categories.map((category, index) => (
           <SwiperSlide key={index}>
-            <div className="border border-gray-300 p-2 rounded category-card">
+            <div className="border border-gray-300 p-2 rounded-lg category-card">
               <div className="flex items-center justify-center">
                 <img
                   src={category.img}
@@ -51,7 +51,7 @@ export default function Categories() {
                 />
               </div>
               <div className="text-center mt-2">
-                <span className="text-lg font-semibold">{category.name}</span>
+                <span className="text-lg">{category.name}</span>
               </div>
             </div>
           </SwiperSlide>

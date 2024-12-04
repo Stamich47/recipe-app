@@ -1,10 +1,12 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 12px;
+  background-color: #edf6f9;
 }
 
 .recipe-card {
@@ -13,10 +15,20 @@ body {
 }
 
 .category-card {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 5px rgba(158, 154, 154, 0.75);
+  background-color: #83c5be;
 }
 
 .swiper-wrapper {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.discover-img {
+  box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.75);
+}
+
+.text-2xl {
+  color: #006d77;
+  font-weight: bold;
 }
