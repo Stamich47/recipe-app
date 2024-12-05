@@ -1,10 +1,10 @@
 import { FaBars, FaHeart } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-import BiteSizeLogo from "./assets/BiteSizeLogo.png";
+import BiteSizeNew from "./assets/BiteSizedNew.png";
 
 export default function NavBar() {
   return (
-    <div className="navbar -4">
+    <div className="navbar mb-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <button>
@@ -12,7 +12,7 @@ export default function NavBar() {
           </button>
         </div>
         <div>
-          <img src={BiteSizeLogo} alt="BiteSize" className="w-48" />
+          <img src={BiteSizeNew} alt="BiteSize" className="w-48" />
         </div>
         <div>
           <ul className="flex space-x-5">
