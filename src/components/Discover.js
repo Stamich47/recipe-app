@@ -2,11 +2,10 @@ import { useGetDiscoverRecipeQuery } from "../slices/fetchDataSlice";
 
 export default function Discover() {
   const { data, error, isLoading } = useGetDiscoverRecipeQuery();
-  console.log(data);
 
   return (
     <div>
-      <div className="text-2xl mt-10 my-3">Discover</div>
+      <div className="text-2xl my-4">Discover</div>
       <div>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}

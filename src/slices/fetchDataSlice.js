@@ -17,6 +17,10 @@ export const recipeApi = createApi({
     getDiscoverRecipe: builder.query({
       query: () => `/recipes/random?apiKey=${apiKey}&number=1`,
     }),
+    getTrendingRecipe: builder.query({
+      query: ({ number, type }) =>
+        `/recipes/random?apiKey=${apiKey}&number=${number}&include-tags=${type}`,
+    }),
   }),
 });
 
@@ -24,4 +28,5 @@ export const {
   useGetRecipesQuery,
   useGetRecipeInfoQuery,
   useGetDiscoverRecipeQuery,
+  useGetTrendingRecipeQuery,
 } = recipeApi;

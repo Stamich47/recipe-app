@@ -1,4 +1,5 @@
 import NavBar from "../components/NavBar";
+import Search from "../components/Search";
 import Discover from "../components/Discover";
 import Categories from "../components/Categories";
 import Trending from "../components/Trending";
@@ -9,6 +10,7 @@ export default function Main() {
   return (
     <div>
       <NavBar />
+      <Search />
       <Discover />
       <Categories />
       <Trending />

@@ -4,7 +4,7 @@ import BiteSizeLogo from "./assets/BiteSizeLogo.png";
 
 export default function NavBar() {
   return (
-    <div className="navbar p-4">
+    <div className="navbar -4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <button>

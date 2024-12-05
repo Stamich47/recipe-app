@@ -30,8 +30,8 @@ export default function Categories() {
   ];
 
   return (
-    <div className="my-4 py-4">
-      <h1 className="text-2xl my-3">Categories</h1>
+    <div>
+      <h1 className="text-2xl mt-6">Categories</h1>
       <Swiper
         modules={[Pagination, A11y, Navigation, Scrollbar]}
         spaceBetween={30}
