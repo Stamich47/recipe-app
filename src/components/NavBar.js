@@ -12,7 +12,7 @@ export default function NavBar() {
           </button>
         </div>
         <div>
-          <img src={BiteSizeNew} alt="BiteSize" className="w-48" />
+          <img src={BiteSizeNew} alt="BiteSize" className="w-52" />
         </div>
         <div>
           <ul className="flex space-x-5">

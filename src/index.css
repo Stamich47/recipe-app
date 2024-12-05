@@ -7,6 +7,7 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 12px;
   background-color: #edf6f9;
+  max-width: 800px;
 }
 
 .recipe-card {
@@ -16,7 +17,7 @@ body {
 
 .category-card {
   box-shadow: 2px 2px 5px #83c5be;
-  background-color: #83c5be;
+  background-color: #83c5bf91;
 }
 
 .swiper-wrapper {

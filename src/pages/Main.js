@@ -11,8 +11,8 @@ export default function Main() {
     <div>
       <NavBar />
       <Search />
-      <Discover />
       <Categories />
+      <Discover />
       <Trending />
       <Pantry />
       <Footer />

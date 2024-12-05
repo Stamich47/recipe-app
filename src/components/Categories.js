@@ -1,4 +1,3 @@
-// import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import breakfast from "./assets/english-breakfast.png";
@@ -9,7 +8,6 @@ import desserts from "./assets/desserts.png";
 import salad from "./assets/salad.png";
 import soup from "./assets/soup.png";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -37,12 +35,13 @@ export default function Categories() {
         spaceBetween={30}
         slidesPerView={3}
         navigation
+        pagination={{ clickable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
         {categories.map((category, index) => (
           <SwiperSlide key={index}>
-            <div className="border border-gray-300 p-2 rounded-lg category-card">
+            <div className="border p-2 rounded-lg category-card">
               <div className="flex items-center justify-center">
                 <img
                   src={category.img}

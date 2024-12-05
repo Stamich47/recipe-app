@@ -7,7 +7,7 @@ export default function Pantry() {
     <div className="pantry-container">
       <div className="text-2xl mt-10 my-3">My Pantry</div>
       <div className="flex justify-center gap-5">
-        <div className="border border-gray-300 p-2 rounded-lg category-card">
+        <div className="border  p-2 rounded-lg category-card">
           <div className="flex items-center justify-center">
             <img src={spices} alt="spices" className="rounded w-16" />
           </div>
@@ -16,7 +16,7 @@ export default function Pantry() {
           </div>
         </div>
 
-        <div className="border border-gray-300 p-2 rounded-lg category-card ">
+        <div className="border p-2 rounded-lg category-card ">
           <div className="flex items-center justify-center">
             <img src={fruits} alt="spices" className="rounded w-16" />
           </div>
@@ -24,7 +24,7 @@ export default function Pantry() {
             <span className="text-lg">Fruits & Vegetables</span>
           </div>
         </div>
-        <div className="border border-gray-300 p-2 rounded-lg category-card">
+        <div className="border p-2 rounded-lg category-card">
           <div className="flex items-center justify-center">
             <img src={meat} alt="spices" className="rounded w-16" />
           </div>
