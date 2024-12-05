@@ -2,6 +2,7 @@ import { useGetDiscoverRecipeQuery } from "../slices/fetchDataSlice";
 
 export default function Discover() {
   const { data, error, isLoading } = useGetDiscoverRecipeQuery();
+  console.log(data);
 
   return (
     <div>

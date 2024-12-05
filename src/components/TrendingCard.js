@@ -2,7 +2,7 @@ export default function TrendingCard({ recipeInfoData }) {
   return (
     <div
       key={recipeInfoData.id}
-      className="relative w-full max-w-sm m-3 overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
+      className="trending-card relative w-full max-w-sm m-3 overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
     >
       <img
         src={recipeInfoData.image}

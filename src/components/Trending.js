@@ -6,7 +6,6 @@ export default function Trending() {
     number: 2,
     type: "christmas",
   });
-  console.log(data);
 
   return (
     <div>
