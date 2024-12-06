@@ -1,15 +1,18 @@
-import { FaBars, FaHeart } from "react-icons/fa";
-import { CgProfile } from "react-icons/cg";
+import { FaBars, FaHeart, FaHome } from "react-icons/fa";
+// import { CgProfile } from "react-icons/cg";
 import BiteSizeNew from "./assets/BiteSizedNew.png";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <div className="navbar mb-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <button>
-            <CgProfile size={30} color="#006D77" />
-          </button>
+          <Link to="/">
+            <button>
+              <FaHome size={32} color="#006D77" />
+            </button>
+          </Link>
         </div>
         <div>
           <img src={BiteSizeNew} alt="BiteSize" className="w-52" />

@@ -44,3 +44,14 @@ body {
 .pantry-container .category-card {
   width: 30%;
 }
+
+.swiper-pagination {
+  position: absolute;
+  bottom: -4px !important;
+}
+
+.autocomplete-list,
+.dropdown-container,
+.filter-box {
+  z-index: 10;
+}

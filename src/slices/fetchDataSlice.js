@@ -7,8 +7,8 @@ export const recipeApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.spoonacular.com" }),
   endpoints: (builder) => ({
     getRecipes: builder.query({
-      query: ({ number, type }) =>
-        `/recipes/complexSearch?apiKey=${apiKey}&query=${type}&number=${number}`,
+      query: ({ type }) =>
+        `/recipes/complexSearch?apiKey=${apiKey}&query=${type}&number=10`,
     }),
     getRecipeInfo: builder.query({
       query: (idList) =>
@@ -21,6 +21,10 @@ export const recipeApi = createApi({
       query: ({ number, type }) =>
         `/recipes/random?apiKey=${apiKey}&number=${number}&include-tags=${type}`,
     }),
+    getAutoComplete: builder.query({
+      query: (query) =>
+        `/recipes/autocomplete?apiKey=${apiKey}&number=5&query=${query}`,
+    }),
   }),
 });
 
@@ -29,4 +33,5 @@ export const {
   useGetRecipeInfoQuery,
   useGetDiscoverRecipeQuery,
   useGetTrendingRecipeQuery,
+  useGetAutoCompleteQuery,
 } = recipeApi;

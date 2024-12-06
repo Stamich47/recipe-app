@@ -1,5 +1,7 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
+
 import breakfast from "./assets/english-breakfast.png";
 import appetizer from "./assets/appetizer.png";
 import lunch from "./assets/lunch.png";
@@ -13,7 +15,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-export default function Categories() {
+export default function Categories({ setActiveCategory }) {
+  const navigate = useNavigate();
+
+  const handleClick = (categoryName) => {
+    setActiveCategory(categoryName);
+    navigate("/category-results");
+  };
+
   const categories = [
     { name: "Appetizers", img: appetizer },
     {
@@ -34,14 +43,16 @@ export default function Categories() {
         modules={[Pagination, A11y, Navigation, Scrollbar]}
         spaceBetween={30}
         slidesPerView={3}
-        navigation
         pagination={{ clickable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
         {categories.map((category, index) => (
           <SwiperSlide key={index}>
-            <div className="border p-2 rounded-lg category-card">
+            <div
+              onClick={() => handleClick(category.name)}
+              className="border p-2 rounded-lg category-card"
+            >
               <div className="flex items-center justify-center">
                 <img
                   src={category.img}
