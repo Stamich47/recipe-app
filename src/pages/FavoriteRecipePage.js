@@ -15,7 +15,7 @@ export default function FavoriteRecipePage() {
     );
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 flex justify-center ">
       <h1>{data.title}</h1>
       <img src={data.url} alt={data.title} />
     </div>

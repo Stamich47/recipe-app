@@ -26,7 +26,8 @@ export const recipeApi = createApi({
         `/recipes/autocomplete?apiKey=${apiKey}&number=5&query=${query}`,
     }),
     getRecipeCard: builder.query({
-      query: (id) => `/recipes/${id}/card?apiKey=${apiKey}`,
+      query: (id) =>
+        `/recipes/${id}/card?backgroundColor=FFDDD2&&apiKey=${apiKey}`,
     }),
   }),
 });
