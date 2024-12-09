@@ -25,6 +25,9 @@ export const recipeApi = createApi({
       query: (query) =>
         `/recipes/autocomplete?apiKey=${apiKey}&number=5&query=${query}`,
     }),
+    getRecipeCard: builder.query({
+      query: (id) => `/recipes/${id}/card?apiKey=${apiKey}`,
+    }),
   }),
 });
 
@@ -34,4 +37,5 @@ export const {
   useGetDiscoverRecipeQuery,
   useGetTrendingRecipeQuery,
   useGetAutoCompleteQuery,
+  useGetRecipeCardQuery,
 } = recipeApi;

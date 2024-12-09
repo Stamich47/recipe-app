@@ -5,6 +5,7 @@ import Search from "./components/Search";
 import Footer from "./components/Footer";
 import CategoryResults from "./pages/CategoryResults";
 import FavoritesPage from "./pages/FavoritesPage";
+import FavoriteRecipePage from "./pages/FavoriteRecipePage";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -24,6 +25,7 @@ function App() {
           element={<CategoryResults activeCategory={activeCategory} />}
         />
         <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/recipe/:recipeId" element={<FavoriteRecipePage />} />
       </Routes>
       <Footer />
     </div>

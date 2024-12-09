@@ -1,36 +1,18 @@
 import { useSelector } from "react-redux";
-import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+import FavoritesCard from "../components/assets/FavoritesCard";
 
 export default function FavoritesPage() {
   const favorites = useSelector((state) => state.saveFavorite.favorites);
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-center mt-4">Favorites</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+    <div className="container mx-auto mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {favorites.map((favorite) => (
-          <div
-            key={favorite.id}
-            className="flex flex-col bg-white shadow-lg rounded-lg"
-          >
-            <div className="relative rounded-lg overflow-hidden">
-              <img
-                src={favorite.image}
-                alt={favorite.title}
-                className="w-full h-52 object-cover"
-              />
-              <div className="absolute top-0 right-0 m-4">
-                <button>
-                  <FaHeart color={"#f27e8a"} size={20} />
-                </button>
-              </div>
-              <div className="absolute bottom-0 bg-gradient-to-t from-black to-transparent w-full p-4">
-                <div className="text-md font-bold text-white">
-                  {favorite.title}
-                </div>
-              </div>
-            </div>
-          </div>
+          <Link to={`/recipe/${favorite.id}`}>
+            <FavoritesCard key={favorite.id} favorite={favorite} />
+          </Link>
         ))}
       </div>
     </div>
