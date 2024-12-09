@@ -5,11 +5,13 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { recipeApi } from "./slices/fetchDataSlice";
+import saveFavoriteReducer from "./slices/saveFavoriteSlice";
 import { BrowserRouter } from "react-router-dom";
 
 const store = configureStore({
   reducer: {
     [recipeApi.reducerPath]: recipeApi.reducer,
+    saveFavorite: saveFavoriteReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(recipeApi.middleware),

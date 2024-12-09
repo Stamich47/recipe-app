@@ -70,8 +70,6 @@ export default function CategoryResults({ activeCategory }) {
   //   type: activeCategory,
   // });
 
-  console.log(data.results);
-
   return (
     <div>
       <div className="text-2xl my-4 text-center">{activeCategory}</div>
