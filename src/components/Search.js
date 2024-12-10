@@ -1,33 +1,23 @@
-// import { useGetAutoCompleteQuery } from "../slices/fetchDataSlice";
 import { useState } from "react";
 import Dropdown from "./Dropdown";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
-  // const { data } = useGetAutoCompleteQuery(searchTerm);
+
+  const navigate = useNavigate();
 
   const options = ["Vegan", "Vegetarian", "Gluten Free", "Dairy Free"];
 
-  const handleInputChange = (e) => {
+  const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
-    console.log(searchTerm);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      "search submitted with term:",
-      searchTerm,
-      "and filters:",
-      selectedOptions
-    );
+    navigate(`/search-results?query=${searchTerm}`);
   };
-
-  // const filteredData = data?.filter((recipe) =>
-  //   recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
 
   return (
     <div>
@@ -49,7 +39,7 @@ export default function Search() {
               type="text"
               name="search"
               value={searchTerm}
-              onChange={handleInputChange}
+              onChange={handleSearchTermChange}
             />
           </label>
           <Dropdown
@@ -57,14 +47,13 @@ export default function Search() {
             selectedOptions={selectedOptions}
             setSelectedOptions={setSelectedOptions}
           />
-          <Link to="/search-results">
-            <button
-              type="submit"
-              className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
-            >
-              Search
-            </button>
-          </Link>
+
+          <button
+            type="submit"
+            className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
+          >
+            Search
+          </button>
         </div>
       </form>
     </div>
