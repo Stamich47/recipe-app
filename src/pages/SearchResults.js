@@ -1,4 +1,4 @@
-import SearchResultsCard from "../components/assets/SearchResultsCard";
+import ResultsCard from "../components/ResultsCard";
 
 const data = [
   {
@@ -2666,7 +2666,7 @@ export default function SearchResults() {
       <h1 className="text-2xl my-4 text-center">Search Results for Chicken</h1>
       <div className="flex flex-wrap justify-center gap-2 mt-4">
         {data.map((recipe) => (
-          <SearchResultsCard key={recipe.id} recipe={recipe} />
+          <ResultsCard key={recipe.id} recipeInfoData={recipe} />
         ))}
       </div>
     </div>

@@ -2,9 +2,14 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { saveFavorite, removeFavorite } from "../slices/saveFavoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
+import placeholder from "./assets/placeholder.png";
 
 export default function ResultsCard({ recipeInfoData }) {
   const [isLiked, setIsLiked] = useState(false);
+  const [imgSource, setImgSource] = useState(
+    recipeInfoData.image || placeholder
+  );
+
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.saveFavorite.favorites);
 
@@ -18,6 +23,10 @@ export default function ResultsCard({ recipeInfoData }) {
     }
   };
 
+  const handleError = () => {
+    setImgSource(placeholder);
+  };
+
   useEffect(() => {
     setIsLiked(favorites.some((fav) => fav.id === recipeInfoData.id));
   }, [favorites, recipeInfoData.id]);
@@ -26,9 +35,10 @@ export default function ResultsCard({ recipeInfoData }) {
     <div className="flex flex-col bg-white shadow-lg rounded-md">
       <div className="relative rounded-md overflow-hidden">
         <img
-          src={recipeInfoData.image}
+          src={imgSource}
           alt={recipeInfoData.title}
           className="w-full h-32 object-cover"
+          onError={handleError}
         />
         <div className="absolute top-0 right-0 m-2">
           <button onClick={handleLike}>
@@ -39,7 +49,7 @@ export default function ResultsCard({ recipeInfoData }) {
             )}
           </button>
         </div>
-        <div className="absolute bottom-0 bg-gradient-to-t from-black to-transparent w-full p-2">
+        <div className="absolute bottom-0 bg-gradient-to-t from-gray-800 to-transparent w-full p-2">
           <div className="text-xs font-bold text-white bg-gray-500 bg-opacity-40 p-1 rounded-lg ">
             {recipeInfoData.title}
           </div>
