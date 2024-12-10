@@ -74,7 +74,7 @@ export default function CategoryResults({ activeCategory }) {
     <div>
       <div className="text-2xl my-4 text-center">{activeCategory}</div>
       {data && (
-        <div className="flex flex-wrap justify-center gap-2 mt-4 ">
+        <div className="flex flex-wrap justify-center gap-2 mt-4">
           {data.map((recipe) => (
             <div key={recipe.id}>
               <ResultsCard recipeInfoData={recipe} />

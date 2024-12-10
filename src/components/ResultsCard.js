@@ -23,27 +23,27 @@ export default function ResultsCard({ recipeInfoData }) {
   }, [favorites, recipeInfoData.id]);
 
   return (
-    <div className="flex flex-col bg-white shadow-lg rounded-lg">
-      <div className="relative rounded-lg overflow-hidden">
+    <div className="flex flex-col bg-white shadow-lg rounded-md">
+      <div className="relative rounded-md overflow-hidden">
         <img
           src={recipeInfoData.image}
           alt={recipeInfoData.title}
-          className="w-full h-52 object-cover"
+          className="w-full h-32 object-cover"
         />
-        <div className="absolute top-0 right-0 m-4">
+        <div className="absolute top-0 right-0 m-2">
           <button onClick={handleLike}>
             {isLiked ? (
-              <FaHeart color={"#f27e8a"} size={20} />
+              <FaHeart color={"#f27e8a"} size={16} />
             ) : (
-              <FaRegHeart className="text-red-700" size={20} />
+              <FaRegHeart className="text-red-700" size={16} />
             )}
           </button>
         </div>
-        <div className="absolute bottom-0 bg-gradient-to-t from-black to-transparent w-full p-4">
-          <div className="text-md font-bold text-white">
+        <div className="absolute bottom-0 bg-gradient-to-t from-black to-transparent w-full p-2">
+          <div className="text-xs font-bold text-white bg-gray-500 bg-opacity-40 p-1 rounded-lg ">
             {recipeInfoData.title}
           </div>
-          {/* <div className="text-sm text-gray-300">
+          {/* <div className="text-xs text-gray-300">
             {recipeInfoData.readyInMinutes} minutes
           </div> */}
         </div>

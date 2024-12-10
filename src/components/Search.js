@@ -1,6 +1,7 @@
 // import { useGetAutoCompleteQuery } from "../slices/fetchDataSlice";
 import { useState } from "react";
 import Dropdown from "./Dropdown";
+import { Link } from "react-router-dom";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -51,29 +52,19 @@ export default function Search() {
               onChange={handleInputChange}
             />
           </label>
-          {/* {filteredData && filteredData.length > 0 && (
-          <ul className="autocomplete-list absolute bg-white border border-slate-300 rounded-md mt-1 w-full shadow-lg">
-            {filteredData.map((recipe) => (
-              <li
-                key={recipe.id}
-                className="autocomplete-item p-2 hover:bg-slate-100 cursor-pointer"
-              >
-                {recipe.title}
-              </li>
-            ))}
-          </ul>
-        )} */}
           <Dropdown
             options={options}
             selectedOptions={selectedOptions}
             setSelectedOptions={setSelectedOptions}
           />
-          <button
-            type="submit"
-            className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
-          >
-            Search
-          </button>
+          <Link to="/search-results">
+            <button
+              type="submit"
+              className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
+            >
+              Search
+            </button>
+          </Link>
         </div>
       </form>
     </div>

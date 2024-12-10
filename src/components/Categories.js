@@ -44,8 +44,6 @@ export default function Categories({ setActiveCategory }) {
         spaceBetween={30}
         slidesPerView={3}
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
       >
         {categories.map((category, index) => (
           <SwiperSlide key={index}>

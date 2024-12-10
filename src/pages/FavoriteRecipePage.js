@@ -4,20 +4,18 @@ import { useGetRecipeCardQuery } from "../slices/fetchDataSlice";
 export default function FavoriteRecipePage() {
   const { recipeId } = useParams();
   const { data, error, isLoading } = useGetRecipeCardQuery(recipeId);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error)
-    return (
-      <div className="mt-4">
-        Error loading recipe card. This could be due to the recipe having too
-        many ingredients (max 14).
-      </div>
-    );
+  console.log(data);
 
   return (
-    <div className="mt-4 flex justify-center ">
-      <h1>{data.title}</h1>
-      <img src={data.url} alt={data.title} />
+    <div className="container mx-auto mt-4">
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      {data && (
+        <div className="mt-4 flex justify-center ">
+          <h1>{data.title}</h1>
+          <img src={data.url} alt={data.title} />
+        </div>
+      )}
     </div>
   );
 }
