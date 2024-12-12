@@ -1,10 +1,14 @@
 import { useState } from "react";
 import Dropdown from "./Dropdown";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { saveFilterOptions } from "../slices/searchResultsSlice";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -16,6 +20,7 @@ export default function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(saveFilterOptions(selectedOptions));
     navigate(`/search-results?query=${searchTerm}`);
   };
 

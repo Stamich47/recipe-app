@@ -1,6 +1,8 @@
 import ResultsCard from "../components/ResultsCard";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { saveSearchResults } from "../slices/searchResultsSlice";
 
 export default function SearchResults() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -8,6 +10,10 @@ export default function SearchResults() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
+  const filteredOptions = useSelector(
+    (state) => state.searchResults.filterOptions
+  );
+  const dispatch = useDispatch();
 
   const location = useLocation();
   useEffect(() => {
@@ -21,13 +27,41 @@ export default function SearchResults() {
       const fetchSearchResults = async () => {
         setIsLoading(true);
         setError(null);
+        let allResults = [];
+        let offset = 0;
+        const batchSize = 100;
+
         try {
-          const response = await fetch(
-            `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&apiKey=${apiKey}`
-          );
-          const result = await response.json();
-          setData(result.results || []);
-          console.log(result);
+          while (allResults.length < 20) {
+            const response = await fetch(
+              `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&addRecipeInformation=true&apiKey=${apiKey}&offset=${offset}&number=${batchSize}`
+            );
+            const result = await response.json();
+            dispatch(
+              saveSearchResults({ query: searchTerm, results: result.results })
+            );
+
+            const filteredResults = result.results.filter((recipe) => {
+              return !(
+                (filteredOptions.includes("Vegan") && recipe.vegan === false) ||
+                (filteredOptions.includes("Vegetarian") &&
+                  recipe.vegetarian === false) ||
+                (filteredOptions.includes("Gluten Free") &&
+                  recipe.glutenFree === false) ||
+                (filteredOptions.includes("Dairy Free") &&
+                  recipe.dairyFree === false)
+              );
+            });
+
+            allResults = allResults.concat(filteredResults);
+            offset += batchSize;
+
+            if (result.results.length === 0) {
+              break;
+            }
+          }
+
+          setData(allResults.slice(0, 20));
         } catch (error) {
           setError(error);
         } finally {
@@ -37,7 +71,9 @@ export default function SearchResults() {
 
       fetchSearchResults();
     }
-  }, [searchTerm, apiKey]);
+  }, [searchTerm, apiKey, filteredOptions, dispatch]);
+
+  console.log(data);
 
   return (
     <div>
