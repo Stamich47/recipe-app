@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Dropdown from "./Dropdown";
+// import Dropdown from "./Dropdown";
+import { Dropdown } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { saveFilterOptions } from "../slices/searchResultsSlice";
@@ -17,11 +18,18 @@ export default function Search() {
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
   };
+  const handleOptionChange = (option) => {
+    setSelectedOptions((prevSelected) =>
+      prevSelected.includes(option)
+        ? prevSelected.filter((item) => item !== option)
+        : [...prevSelected, option]
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(saveFilterOptions(selectedOptions));
-    navigate(`/search-results?query=${searchTerm}`);
+    navigate(`/search-results?query=${searchTerm.toLowerCase()}`);
   };
 
   return (
@@ -47,15 +55,38 @@ export default function Search() {
               onChange={handleSearchTermChange}
             />
           </label>
-          <Dropdown
-            options={options}
-            selectedOptions={selectedOptions}
-            setSelectedOptions={setSelectedOptions}
-          />
+
+          <Dropdown label="Filter">
+            <div>
+              {options.map((option) => (
+                <Dropdown.Item
+                  key={option}
+                  onClick={() => handleOptionChange(option)}
+                >
+                  <label
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleOptionChange(option);
+                    }}
+                    className="flex items-center w-full cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedOptions.includes(option)}
+                      onChange={() => handleOptionChange(option)}
+                      className="mr-2"
+                    />
+                    {option}
+                  </label>
+                </Dropdown.Item>
+              ))}
+            </div>
+          </Dropdown>
 
           <button
             type="submit"
-            className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
+            className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
           >
             Search
           </button>

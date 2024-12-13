@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const saveFavoritesToLocalStorage = (favorites) => {
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-};
-
 const getFavoritesFromLocalStorage = () => {
   const favorites = localStorage.getItem("favorites");
   if (favorites) {
@@ -20,13 +16,17 @@ export const saveFavoriteSlice = createSlice({
   reducers: {
     saveFavorite: (state, action) => {
       state.favorites.push(action.payload);
-      saveFavoritesToLocalStorage(state.favorites);
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      if (state.favorites.length > 10) {
+        state.favorites.shift();
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      }
     },
     removeFavorite: (state, action) => {
       state.favorites = state.favorites.filter(
         (favorite) => favorite.id !== action.payload.id
       );
-      saveFavoritesToLocalStorage(state.favorites);
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
   },
 });

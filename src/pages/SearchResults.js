@@ -32,16 +32,11 @@ export default function SearchResults() {
         const batchSize = 100;
 
         try {
-          while (allResults.length < 20) {
-            const response = await fetch(
-              `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&addRecipeInformation=true&apiKey=${apiKey}&offset=${offset}&number=${batchSize}`
-            );
-            const result = await response.json();
-            dispatch(
-              saveSearchResults({ query: searchTerm, results: result.results })
-            );
-
-            const filteredResults = result.results.filter((recipe) => {
+          const storedResults = localStorage.getItem(searchTerm);
+          if (storedResults) {
+            console.log(`Using cached results for query: ${searchTerm}`);
+            const cachedResults = JSON.parse(storedResults);
+            allResults = cachedResults.filter((recipe) => {
               return !(
                 (filteredOptions.includes("Vegan") && recipe.vegan === false) ||
                 (filteredOptions.includes("Vegetarian") &&
@@ -52,13 +47,42 @@ export default function SearchResults() {
                   recipe.dairyFree === false)
               );
             });
+          } else {
+            while (allResults.length < 20) {
+              const response = await fetch(
+                `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&addRecipeInformation=true&addRecipeInstructions=true&fillIngredients=true&apiKey=${apiKey}&offset=${offset}&number=${batchSize}`
+              );
+              const result = await response.json();
 
-            allResults = allResults.concat(filteredResults);
-            offset += batchSize;
+              dispatch(
+                saveSearchResults({
+                  query: searchTerm,
+                  results: result.results,
+                })
+              );
 
-            if (result.results.length === 0) {
-              break;
+              const filteredResults = result.results.filter((recipe) => {
+                return !(
+                  (filteredOptions.includes("Vegan") &&
+                    recipe.vegan === false) ||
+                  (filteredOptions.includes("Vegetarian") &&
+                    recipe.vegetarian === false) ||
+                  (filteredOptions.includes("Gluten Free") &&
+                    recipe.glutenFree === false) ||
+                  (filteredOptions.includes("Dairy Free") &&
+                    recipe.dairyFree === false)
+                );
+              });
+
+              allResults = allResults.concat(filteredResults);
+              offset += batchSize;
+
+              if (result.results.length === 0) {
+                break;
+              }
             }
+
+            localStorage.setItem(searchTerm, JSON.stringify(allResults));
           }
 
           setData(allResults.slice(0, 20));
@@ -78,7 +102,7 @@ export default function SearchResults() {
   return (
     <div>
       <h1 className="text-2xl my-4 text-center">
-        Search Results for {searchTerm}
+        Search Results for '{searchTerm}'
       </h1>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
