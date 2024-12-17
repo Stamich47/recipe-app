@@ -6,7 +6,9 @@ import Footer from "./components/Footer";
 import CategoryResults from "./pages/CategoryResults";
 import FavoritesPage from "./pages/FavoritesPage";
 import FavoriteRecipePage from "./pages/FavoriteRecipePage";
-import SearchResults from "./pages/SearchResults";
+// import SearchResults from "./pages/SearchResults";
+import SearchResultsSupabase from "./pages/SearchResultsSupabase";
+
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -27,7 +29,7 @@ function App() {
         />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/recipe/:recipeId" element={<FavoriteRecipePage />} />
-        <Route path="/search-results" element={<SearchResults />} />
+        <Route path="/search-results" element={<SearchResultsSupabase />} />
       </Routes>
       <Footer />
     </div>
