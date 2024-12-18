@@ -23,7 +23,7 @@ export const recipeApi = createApi({
     }),
     getAutoComplete: builder.query({
       query: (query) =>
-        `/recipes/autocomplete?apiKey=${apiKey}&number=5&query=${query}`,
+        `/food/ingredients/autocomplete?apiKey=${apiKey}&number=10&query=${query}&language=en`,
     }),
     getRecipeCard: builder.query({
       query: (id) =>

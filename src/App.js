@@ -8,6 +8,8 @@ import FavoritesPage from "./pages/FavoritesPage";
 import FavoriteRecipePage from "./pages/FavoriteRecipePage";
 // import SearchResults from "./pages/SearchResults";
 import SearchResultsSupabase from "./pages/SearchResultsSupabase";
+import FridgeResults from "./components/FridgeResults";
+import PantryResults from "./components/PantryResults";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -30,6 +32,8 @@ function App() {
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/recipe/:recipeId" element={<FavoriteRecipePage />} />
         <Route path="/search-results" element={<SearchResultsSupabase />} />
+        <Route path="/fridge" element={<FridgeResults />} />
+        <Route path="/pantry" element={<PantryResults />} />
       </Routes>
       <Footer />
     </div>

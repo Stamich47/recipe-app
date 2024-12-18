@@ -97,8 +97,6 @@ export default function SearchResults() {
     }
   }, [searchTerm, apiKey, filteredOptions, dispatch]);
 
-  console.log(data);
-
   return (
     <div>
       <h1 className="text-2xl my-4 text-center">

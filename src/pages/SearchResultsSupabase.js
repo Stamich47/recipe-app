@@ -38,6 +38,7 @@ export default function SearchResultsSupabase() {
             .select("results")
             .eq("search_term", searchTerm)
             .single();
+          console.log(storedResults);
 
           if (
             fetchError &&

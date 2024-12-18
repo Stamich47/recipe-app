@@ -17,7 +17,6 @@ export default function ResultsCard({ recipeInfoData }) {
 
   useEffect(() => {
     setIsVegan(recipeInfoData.vegan);
-    console.log(recipeInfoData.vegan);
   }, [recipeInfoData.vegan]);
 
   const handleLike = () => {
