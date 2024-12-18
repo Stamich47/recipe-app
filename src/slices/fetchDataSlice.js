@@ -8,7 +8,7 @@ export const recipeApi = createApi({
   endpoints: (builder) => ({
     getRecipes: builder.query({
       query: (type) =>
-        `/recipes/complexSearch?apiKey=${apiKey}&query=${type}&addRecipeInformation=true&addRecipeInstructions=true&number=10`,
+        `/recipes/complexSearch?apiKey=${apiKey}&query=${type}&addRecipeInformation=true&addRecipeInstructions=true&number=20`,
     }),
     getRecipeInfo: builder.query({
       query: (idList) =>

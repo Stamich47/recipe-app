@@ -3,15 +3,22 @@ import { useState, useEffect } from "react";
 import { saveFavorite, removeFavorite } from "../slices/saveFavoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import placeholder from "./assets/placeholder.png";
+import { LuVegan } from "react-icons/lu";
 
 export default function ResultsCard({ recipeInfoData }) {
   const [isLiked, setIsLiked] = useState(false);
   const [imgSource, setImgSource] = useState(
     recipeInfoData.image || placeholder
   );
+  const [isVegan, setIsVegan] = useState(false);
 
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.saveFavorite.favorites);
+
+  useEffect(() => {
+    setIsVegan(recipeInfoData.vegan);
+    console.log(recipeInfoData.vegan);
+  }, [recipeInfoData.vegan]);
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -49,13 +56,13 @@ export default function ResultsCard({ recipeInfoData }) {
             )}
           </button>
         </div>
+        <div className="absolute top-0 left-0 m-2">
+          {isVegan && <LuVegan color={"#4CAF50"} size={16} />}
+        </div>
         <div className="absolute bottom-0 bg-gradient-to-t from-gray-800 to-transparent w-full p-2">
           <div className="text-xs font-bold text-white bg-gray-500 bg-opacity-40 p-1 rounded-lg ">
             {recipeInfoData.title}
           </div>
-          {/* <div className="text-xs text-gray-300">
-            {recipeInfoData.readyInMinutes} minutes
-          </div> */}
         </div>
       </div>
     </div>

@@ -8,9 +8,9 @@ export const searchResultsSlice = createSlice({
   },
   reducers: {
     saveSearchResults: (state, action) => {
-      const { query, results } = action.payload;
+      const { results } = action.payload;
       state.searchResults = results;
-      localStorage.setItem(query, JSON.stringify(results));
+      // localStorage.setItem(query, JSON.stringify(results));
     },
     saveFilterOptions: (state, action) => {
       state.filterOptions = action.payload;
