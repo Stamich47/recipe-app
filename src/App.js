@@ -17,25 +17,27 @@ import { useState } from "react";
 function App() {
   const [activeCategory, setActiveCategory] = useState("");
   return (
-    <div>
-      <NavBar />
-      <Search />
-      <Routes>
-        <Route
-          path="/"
-          element={<Home setActiveCategory={setActiveCategory} />}
-        />
-        <Route
-          path="/category-results"
-          element={<CategoryResults activeCategory={activeCategory} />}
-        />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/recipe/:recipeId" element={<FavoriteRecipePage />} />
-        <Route path="/search-results" element={<SearchResultsSupabase />} />
-        <Route path="/fridge" element={<FridgeResults />} />
-        <Route path="/pantry" element={<PantryResults />} />
-      </Routes>
-      <Footer />
+    <div className="app-container">
+      <div className="app-content">
+        <NavBar />
+        <Search />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home setActiveCategory={setActiveCategory} />}
+          />
+          <Route
+            path="/category-results"
+            element={<CategoryResults activeCategory={activeCategory} />}
+          />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/recipe/:recipeId" element={<FavoriteRecipePage />} />
+          <Route path="/search-results" element={<SearchResultsSupabase />} />
+          <Route path="/fridge" element={<FridgeResults />} />
+          <Route path="/pantry" element={<PantryResults />} />
+        </Routes>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  margin: 12px;
+  margin: auto;
   background-color: #edf6f9;
   max-width: 800px;
 }
@@ -64,4 +64,10 @@ body {
   border: 1px solid #cbd5e1;
   height: 40px;
   border-radius: 6px !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 1.5em;
+  }
 }

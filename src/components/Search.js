@@ -30,13 +30,14 @@ export default function Search() {
     e.preventDefault();
     dispatch(saveFilterOptions(selectedOptions));
     navigate(`/search-results?query=${searchTerm.toLowerCase()}`);
+    setSearchTerm("");
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="search-container flex gap-2 justify-center">
-          <label className="relative block">
+          <label className="relative block flex-grow">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
               <svg
                 className="h-5 w-5 fill-slate-300"

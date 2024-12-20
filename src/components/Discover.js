@@ -32,7 +32,7 @@ export default function Discover() {
         )}
         {error && <p>Error: {error}</p>}
         {data && (
-          <div className="hero-card relative w-full max-w-sm overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105">
+          <div className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105">
             <img
               src={data.recipes[0].image}
               alt={data.recipes[0].title}

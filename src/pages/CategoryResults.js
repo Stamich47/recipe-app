@@ -74,7 +74,7 @@ export default function CategoryResults({ activeCategory }) {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {data && (
-        <div className="flex flex-wrap justify-center gap-2 mt-4">
+        <div className="flex flex-wrap justify-center gap-4 mt-4">
           {data.results.map((recipe) => (
             <div key={recipe.id}>
               <ResultsCard recipeInfoData={recipe} />
