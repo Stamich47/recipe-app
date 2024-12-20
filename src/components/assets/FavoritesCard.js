@@ -1,4 +1,4 @@
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 export default function FavoritesCard({ favorite }) {
   return (
