@@ -41,9 +41,27 @@ export default function Categories({ setActiveCategory }) {
       <h1 className="text-2xl mt-6">Categories</h1>
       <Swiper
         modules={[Pagination, A11y, Navigation, Scrollbar]}
-        spaceBetween={30}
         slidesPerView={3}
+        spaceBetween={30}
         pagination={{ clickable: true }}
+        breakpoints={{
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
       >
         {categories.map((category, index) => (
           <SwiperSlide key={index}>

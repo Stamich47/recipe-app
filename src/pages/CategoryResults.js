@@ -70,11 +70,11 @@ export default function CategoryResults({ activeCategory }) {
 
   return (
     <div>
-      <div className="text-2xl my-4 text-center">{activeCategory}</div>
+      <h1 className="text-2xl my-4 text-center">{activeCategory}</h1>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {data && (
-        <div className="flex flex-wrap justify-center gap-4 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {data.results.map((recipe) => (
             <div key={recipe.id}>
               <ResultsCard recipeInfoData={recipe} />

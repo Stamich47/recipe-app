@@ -105,7 +105,7 @@ export default function SearchResults() {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {data && (
-        <div className="flex flex-wrap justify-center gap-2 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {data.map((recipe) => (
             <ResultsCard key={recipe.id} recipeInfoData={recipe} />
           ))}
