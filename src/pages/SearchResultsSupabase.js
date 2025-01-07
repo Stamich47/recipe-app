@@ -50,6 +50,8 @@ export default function SearchResultsSupabase() {
 
           if (storedResults) {
             console.log(`Using cached results for query: ${searchTerm}`);
+            console.log(storedResults.results);
+
             allResults = storedResults.results.filter((recipe) => {
               return !(
                 (filteredOptions.includes("Vegan") && recipe.vegan === false) ||
