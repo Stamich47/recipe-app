@@ -8,8 +8,8 @@ export default function Main({ setActiveCategory }) {
   return (
     <div>
       <Categories setActiveCategory={setActiveCategory} />
-      {/* <Discover /> */}
-      {/* <Trending /> */}
+      <Discover />
+      <Trending />
       <EasyMeals />
       <Pantry />
     </div>

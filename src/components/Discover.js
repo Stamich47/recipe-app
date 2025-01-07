@@ -9,7 +9,7 @@ export default function Discover() {
 
   return (
     <div>
-      <div className="text-2xl my-4">Discover</div>
+      <div className="text-2xl my-6">Discover</div>
       <div className="flex gap-4">
         {isLoading && (
           <div className="text-center">

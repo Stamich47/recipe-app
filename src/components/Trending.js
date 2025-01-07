@@ -6,14 +6,14 @@ export default function Trending() {
   const [viewWidth, setViewWidth] = useState(window.innerWidth);
   const { data, error, isLoading } = useGetTrendingRecipeQuery({
     number: 4,
-    type: "christmas",
+    type: "winter",
   });
 
   window.addEventListener("resize", () => setViewWidth(window.innerWidth));
 
   return (
     <div>
-      <div className="text-2xl my-4">Trending</div>
+      <div className="text-2xl my-6">Trending</div>
       <div className="flex gap-4">
         {isLoading && (
           <div className="text-center">
