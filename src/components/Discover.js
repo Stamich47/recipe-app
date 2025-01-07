@@ -1,12 +1,16 @@
 import { useGetDiscoverRecipeQuery } from "../slices/fetchDataSlice";
+import { useState } from "react";
 
 export default function Discover() {
+  const [viewWidth, setViewWidth] = useState(window.innerWidth);
   const { data, error, isLoading } = useGetDiscoverRecipeQuery();
+
+  window.addEventListener("resize", () => setViewWidth(window.innerWidth));
 
   return (
     <div>
       <div className="text-2xl my-4">Discover</div>
-      <div>
+      <div className="flex gap-4">
         {isLoading && (
           <div className="text-center">
             <div role="status">
@@ -31,20 +35,44 @@ export default function Discover() {
           </div>
         )}
         {error && <p>Error: {error}</p>}
-        {data && (
-          <div className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105">
-            <img
-              src={data.recipes[0].image}
-              alt={data.recipes[0].title}
-              className="w-full h-auto"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-              <h1 className="text-white text-lg font-semibold">
-                {data.recipes[0].title}
-              </h1>
+        {data &&
+          viewWidth < 640 &&
+          data.recipes.slice(0, 1).map((recipe) => (
+            <div
+              key={recipe.id}
+              className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105"
+            >
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-auto"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                <h1 className="text-white text-lg font-semibold">
+                  {recipe.title}
+                </h1>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
+        {data &&
+          viewWidth > 640 &&
+          data.recipes.map((recipe) => (
+            <div
+              key={recipe.id}
+              className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105"
+            >
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-auto"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                <h1 className="text-white text-lg font-semibold">
+                  {recipe.title}
+                </h1>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

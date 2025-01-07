@@ -43,7 +43,7 @@ export default function ResultsCard({ recipeInfoData }) {
         <img
           src={imgSource}
           alt={recipeInfoData.title}
-          className="w-full h-32 object-cover"
+          className="w-full h-40 object-cover"
           onError={handleError}
         />
         <div className="absolute top-0 right-0 m-2">

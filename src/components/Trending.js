@@ -1,11 +1,15 @@
 import { useGetTrendingRecipeQuery } from "../slices/fetchDataSlice";
 import TrendingCard from "./TrendingCard";
+import { useState } from "react";
 
 export default function Trending() {
+  const [viewWidth, setViewWidth] = useState(window.innerWidth);
   const { data, error, isLoading } = useGetTrendingRecipeQuery({
-    number: 2,
+    number: 4,
     type: "christmas",
   });
+
+  window.addEventListener("resize", () => setViewWidth(window.innerWidth));
 
   return (
     <div>
@@ -35,7 +39,24 @@ export default function Trending() {
           </div>
         )}
         {error && <div>Error: {error}</div>}
+
         {data &&
+          viewWidth < 640 &&
+          data?.recipes
+            .slice(0, 2)
+            .map((recipe) => (
+              <TrendingCard key={recipe.id} recipeInfoData={recipe} />
+            ))}
+        {data &&
+          viewWidth > 640 &&
+          viewWidth < 1000 &&
+          data?.recipes
+            .slice(0, 3)
+            .map((recipe) => (
+              <TrendingCard key={recipe.id} recipeInfoData={recipe} />
+            ))}
+        {data &&
+          viewWidth > 1000 &&
           data?.recipes.map((recipe) => (
             <TrendingCard key={recipe.id} recipeInfoData={recipe} />
           ))}
