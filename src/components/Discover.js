@@ -36,7 +36,7 @@ export default function Discover() {
         )}
         {error && <p>Error: {error}</p>}
         {data &&
-          viewWidth < 640 &&
+          viewWidth <= 640 &&
           data.recipes.slice(0, 1).map((recipe) => (
             <div
               key={recipe.id}
@@ -56,6 +56,26 @@ export default function Discover() {
           ))}
         {data &&
           viewWidth > 640 &&
+          viewWidth < 1240 &&
+          data.recipes.slice(0, 2).map((recipe) => (
+            <div
+              key={recipe.id}
+              className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105"
+            >
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-auto"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                <h1 className="text-white text-lg font-semibold">
+                  {recipe.title}
+                </h1>
+              </div>
+            </div>
+          ))}
+        {data &&
+          viewWidth >= 1240 &&
           data.recipes.map((recipe) => (
             <div
               key={recipe.id}

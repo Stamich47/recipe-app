@@ -61,13 +61,17 @@ export default function Categories({ setActiveCategory }) {
             slidesPerView: 5,
             spaceBetween: 50,
           },
+          1460: {
+            slidesPerView: 7,
+            spaceBetween: 50,
+          },
         }}
       >
         {categories.map((category, index) => (
           <SwiperSlide key={index}>
             <div
               onClick={() => handleClick(category.name)}
-              className="border p-2 rounded-lg category-card"
+              className="border p-2 rounded-lg category-card transition-transform transform hover:scale-105"
             >
               <div className="flex items-center justify-center">
                 <img

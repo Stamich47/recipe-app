@@ -15,7 +15,7 @@ export const recipeApi = createApi({
         `/recipes/informationBulk?ids=${idList}&apiKey=${apiKey}`,
     }),
     getDiscoverRecipe: builder.query({
-      query: () => `/recipes/random?apiKey=${apiKey}&number=2`,
+      query: () => `/recipes/random?apiKey=${apiKey}&number=3`,
     }),
     getTrendingRecipe: builder.query({
       query: ({ number, type }) =>
