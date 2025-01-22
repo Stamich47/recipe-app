@@ -6,7 +6,7 @@ import placeholder from "./assets/placeholder.png";
 import { LuVegan } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
-export default function ResultsCard({ recipeInfoData }) {
+export default function DiscoverCard({ recipeInfoData }) {
   const [isLiked, setIsLiked] = useState(false);
   const [imgSource, setImgSource] = useState(
     recipeInfoData.image || placeholder
@@ -39,13 +39,13 @@ export default function ResultsCard({ recipeInfoData }) {
   }, [favorites, recipeInfoData.id]);
 
   return (
-    <div className="flex flex-col bg-white shadow-lg rounded-md results-card">
+    <div className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105">
       <div className="relative rounded-md overflow-hidden">
         <Link to={`/recipe-info`}>
           <img
             src={imgSource}
             alt={recipeInfoData.title}
-            className="w-full h-40 object-cover"
+            className="w-full h-auto"
             onError={handleError}
           />
         </Link>
@@ -61,10 +61,10 @@ export default function ResultsCard({ recipeInfoData }) {
         <div className="absolute top-0 left-0 m-2">
           {isVegan && <LuVegan color={"#4CAF50"} className="vegan-icon" />}
         </div>
-        <div className="absolute bottom-0 bg-gradient-to-t from-gray-800 to-transparent w-full p-2">
-          <div className="text-xs font-bold text-white bg-gray-500 bg-opacity-40 p-1 rounded-lg ">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+          <h1 className="text-white text-md font-semibold">
             {recipeInfoData.title}
-          </div>
+          </h1>
         </div>
       </div>
     </div>

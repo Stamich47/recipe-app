@@ -1,5 +1,6 @@
 import { useGetTrendingRecipeQuery } from "../slices/fetchDataSlice";
 import TrendingCard from "./TrendingCard";
+
 import { useState } from "react";
 
 export default function Trending() {
