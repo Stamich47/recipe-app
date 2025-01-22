@@ -6,7 +6,7 @@ export default function Trending() {
   const [viewWidth, setViewWidth] = useState(window.innerWidth);
   const { data, error, isLoading } = useGetTrendingRecipeQuery({
     number: 4,
-    type: "winter",
+    type: "chocolate",
   });
 
   window.addEventListener("resize", () => setViewWidth(window.innerWidth));

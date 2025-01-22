@@ -13,6 +13,10 @@ body {
   max-width: 1640px;
 }
 
+.navbar > div {
+  max-width: 1640px !important;
+}
+
 .recipe-card {
   background-color: #f7dba7;
   scale: 50%;
@@ -21,6 +25,12 @@ body {
 .category-card {
   box-shadow: 2px 2px 5px #83c5be;
   background-color: #83c5bf91;
+}
+
+.results-card:hover {
+  box-shadow: 2px 2px 5px #858585;
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
 }
 
 .swiper-wrapper {
@@ -68,9 +78,30 @@ body {
   border-radius: 6px !important;
 }
 
+.home a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
 @media (max-width: 768px) {
   body {
     margin: 1.5em;
     padding: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 0.5em;
+    padding: 0.5em;
+  }
+
+  .nav-logo {
+    scale: 0.8;
+  }
+
+  .home {
+    padding-right: 24px;
   }
 }

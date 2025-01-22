@@ -10,18 +10,18 @@ export default function NavBar() {
   return (
     <div className="navbar mb-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex items-center home nav-logo">
           <Link to="/">
             <button>
               <FaHome size={32} color="#006D77" />
             </button>
           </Link>
         </div>
-        <div>
+        <div className="nav-logo">
           <img src={BiteSizeNew} alt="BiteSize" className="w-52" />
         </div>
         <div>
-          <ul className="flex space-x-5">
+          <ul className="flex space-x-5 nav-logo">
             <li className="flex items-center">
               <button className="hover:text-gray-400 relative">
                 <Link to="/favorites">

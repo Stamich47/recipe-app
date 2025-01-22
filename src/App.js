@@ -10,6 +10,7 @@ import FavoriteRecipePage from "./pages/FavoriteRecipePage";
 import SearchResultsSupabase from "./pages/SearchResultsSupabase";
 import FridgeResults from "./components/FridgeResults";
 import PantryResults from "./components/PantryResults";
+import RecipeInfo from "./pages/RecipeInfo";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/search-results" element={<SearchResultsSupabase />} />
           <Route path="/fridge" element={<FridgeResults />} />
           <Route path="/pantry" element={<PantryResults />} />
+          <Route path="/recipe-info" element={<RecipeInfo />} />
         </Routes>
         <Footer />
       </div>

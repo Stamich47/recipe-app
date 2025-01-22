@@ -4,6 +4,7 @@ import { saveFavorite, removeFavorite } from "../slices/saveFavoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import placeholder from "./assets/placeholder.png";
 import { LuVegan } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 export default function ResultsCard({ recipeInfoData }) {
   const [isLiked, setIsLiked] = useState(false);
@@ -19,14 +20,24 @@ export default function ResultsCard({ recipeInfoData }) {
     setIsVegan(recipeInfoData.vegan);
   }, [recipeInfoData.vegan]);
 
-  const handleLike = () => {
-    setIsLiked(!isLiked);
+  // const handleLike = () => {
+  //   setIsLiked(!isLiked);
+  //   if (isLiked) {
+  //     dispatch(removeFavorite(recipeInfoData));
+  //   }
+  //   if (!isLiked) {
+  //     dispatch(saveFavorite(recipeInfoData));
+  //   }
+  // };
+
+  const handleLike = (e) => {
+    e.stopPropagation();
     if (isLiked) {
       dispatch(removeFavorite(recipeInfoData));
-    }
-    if (!isLiked) {
+    } else {
       dispatch(saveFavorite(recipeInfoData));
     }
+    setIsLiked(!isLiked);
   };
 
   const handleError = () => {
@@ -38,16 +49,18 @@ export default function ResultsCard({ recipeInfoData }) {
   }, [favorites, recipeInfoData.id]);
 
   return (
-    <div className="flex flex-col bg-white shadow-lg rounded-md">
+    <div className="flex flex-col bg-white shadow-lg rounded-md results-card">
       <div className="relative rounded-md overflow-hidden">
-        <img
-          src={imgSource}
-          alt={recipeInfoData.title}
-          className="w-full h-40 object-cover"
-          onError={handleError}
-        />
-        <div className="absolute top-0 right-0 m-2">
-          <button onClick={handleLike}>
+        <Link to={`/recipe-info`}>
+          <img
+            src={imgSource}
+            alt={recipeInfoData.title}
+            className="w-full h-40 object-cover"
+            onError={handleError}
+          />
+        </Link>
+        <div className="absolute top-0 right-0 m-2" onClick={handleLike}>
+          <button>
             {isLiked ? (
               <FaHeart color={"#f27e8a"} size={16} />
             ) : (
