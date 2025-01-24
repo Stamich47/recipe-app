@@ -1,4 +1,6 @@
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   function logLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -42,7 +44,7 @@ export default function Footer() {
 
   return (
     <div className="bg-gray-500 text-white text-center p-4 my-6 rounded">
-      <p>&copy; 2024 BiteSized</p>
+      <p>&copy; {currentYear} BiteSized</p>
       <p>
         Data provided by <a href="https://spoonacular.com">Spoonacular</a>
       </p>

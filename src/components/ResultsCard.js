@@ -41,7 +41,7 @@ export default function ResultsCard({ recipeInfoData }) {
   return (
     <div className="flex flex-col bg-white shadow-lg rounded-md results-card">
       <div className="relative rounded-md overflow-hidden">
-        <Link to={`/recipe-info`}>
+        <Link to={`/recipe-info`} state={{ recipeInfoData }}>
           <img
             src={imgSource}
             alt={recipeInfoData.title}
