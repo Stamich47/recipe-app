@@ -136,3 +136,8 @@ body {
 .results-card {
   min-width: 150px;
 }
+
+.recipe-image {
+  max-width: 800px;
+  object-fit: cover;
+}

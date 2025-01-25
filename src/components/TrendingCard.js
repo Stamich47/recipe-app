@@ -41,7 +41,7 @@ export default function TrendingCard({ recipeInfoData }) {
   return (
     <div className="trending-card relative w-full max-w-sm overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105">
       <div className="relative rounded-md overflow-hidden">
-        <Link to={`/recipe-info`}>
+        <Link to={`/recipe-info`} state={{ recipeInfoData }}>
           <img
             src={imgSource}
             alt={recipeInfoData.title}

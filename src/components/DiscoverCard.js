@@ -41,11 +41,11 @@ export default function DiscoverCard({ recipeInfoData }) {
   return (
     <div className="hero-card relative w-full max-w-md overflow-hidden rounded-lg discover-img border-2 transition-transform transform hover:scale-105">
       <div className="relative rounded-md overflow-hidden">
-        <Link to={`/recipe-info`}>
+        <Link to={`/recipe-info`} state={{ recipeInfoData }}>
           <img
             src={imgSource}
             alt={recipeInfoData.title}
-            className="w-full h-auto"
+            className="w-full h-auto object-cover"
             onError={handleError}
           />
         </Link>

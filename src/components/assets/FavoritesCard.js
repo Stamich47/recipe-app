@@ -13,8 +13,6 @@ export default function FavoritesCard({ favorite }) {
     setIsVegan(favorite.vegan);
   }, [favorite.vegan]);
 
-  console.log(favorite);
-
   const handleRemoveLike = (e) => {
     e.stopPropagation();
     dispatch(removeFavorite(favorite));
@@ -26,7 +24,7 @@ export default function FavoritesCard({ favorite }) {
       className="flex flex-col bg-white shadow-lg rounded-md results-card"
     >
       <div className="relative rounded-lg overflow-hidden">
-        <Link key={favorite.id} to={`/recipe/${favorite.id}`}>
+        <Link key={favorite.id} to={`/recipe-info`} state={{ favorite }}>
           <img
             src={favorite.image}
             alt={favorite.title}
