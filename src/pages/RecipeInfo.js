@@ -17,8 +17,6 @@ export default function RecipeInfo() {
     return `${lowerBound} - ${upperBound} min`;
   };
 
-  console.log(recipe);
-
   return (
     <div className="recipe-info p-4">
       <h1 className="recipe-title xs:text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl font-bold mb-4 flex justify-center">

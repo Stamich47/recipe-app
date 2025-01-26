@@ -24,7 +24,11 @@ export default function FavoritesCard({ favorite }) {
       className="flex flex-col bg-white shadow-lg rounded-md results-card"
     >
       <div className="relative rounded-lg overflow-hidden">
-        <Link key={favorite.id} to={`/recipe-info`} state={{ favorite }}>
+        <Link
+          key={favorite.id}
+          to={`/recipe-info`}
+          state={{ favorite, from: "Favorites" }}
+        >
           <img
             src={favorite.image}
             alt={favorite.title}
