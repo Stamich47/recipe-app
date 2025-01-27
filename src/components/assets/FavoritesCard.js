@@ -15,7 +15,13 @@ export default function FavoritesCard({ favorite }) {
 
   const handleRemoveLike = (e) => {
     e.stopPropagation();
-    dispatch(removeFavorite(favorite));
+    if (
+      window.confirm(
+        "Are you sure you want to remove this recipe from your favorites?"
+      )
+    ) {
+      dispatch(removeFavorite(favorite));
+    }
   };
 
   return (
@@ -24,11 +30,7 @@ export default function FavoritesCard({ favorite }) {
       className="flex flex-col bg-white shadow-lg rounded-md results-card"
     >
       <div className="relative rounded-lg overflow-hidden">
-        <Link
-          key={favorite.id}
-          to={`/recipe-info`}
-          state={{ favorite, from: "Favorites" }}
-        >
+        <Link to={`/recipe-info`} state={{ favorite, from: "Favorites" }}>
           <img
             src={favorite.image}
             alt={favorite.title}
@@ -43,11 +45,13 @@ export default function FavoritesCard({ favorite }) {
         <div className="absolute top-0 left-0 m-2">
           {isVegan && <LuVegan color={"#4CAF50"} className="vegan-icon" />}
         </div>
-        <div className="absolute bottom-0 bg-gradient-to-t from-gray-800 to-transparent w-full p-2">
-          <div className="text-s font-bold text-white bg-opacity-40 p-1 pt-6 rounded-lg ">
-            {favorite.title}
+        <Link to={`/recipe-info`} state={{ favorite, from: "Favorites" }}>
+          <div className="absolute bottom-0 bg-gradient-to-t from-gray-800 to-transparent w-full p-2">
+            <div className="text-s font-bold text-white bg-opacity-40 p-1 pt-6 rounded-lg ">
+              {favorite.title}
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

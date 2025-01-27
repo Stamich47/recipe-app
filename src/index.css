@@ -141,3 +141,7 @@ body {
   max-width: 800px;
   object-fit: cover;
 }
+
+.dropdown-toggle {
+  cursor: pointer;
+}
