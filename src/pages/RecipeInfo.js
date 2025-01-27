@@ -36,13 +36,18 @@ export default function RecipeInfo() {
   }, [currentWidth]);
 
   return (
-    <div className="recipe-info p-4 flex flex-col">
+    <div className="recipe-info p-4 flex-col">
       <h1 className="recipe-title text-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4">
         {recipe.title}
       </h1>
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-8 ">
-        <div className="xs:scale-70 sm:scale-80 md:scale-90 lg:scale-100 xl:scale-110 recipe-details mb-4 flex-col text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-          <div>
+      <div className="flex max-sm:flex-col justify-center items-center gap-4 ">
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className="recipe-image w-full sm:w-3/4 h-auto mb-4 rounded-lg shadow-md"
+        />
+        <div className="grow recipe-details mb-4 flex-col text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+          <div className="max-sm:flex max-sm:text-xs gap-4 mb-4 items-center justify-center">
             <p className="flex items-center mb-2">
               <FontAwesomeIcon icon={faClock} className="mr-2" />
               {averageMinutes(readyMinutes)}
@@ -56,8 +61,10 @@ export default function RecipeInfo() {
               {recipe.healthScore}
             </p>
           </div>
-          <div className="flex-col items-center dietary-preferences mb-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl ">
-            <h2 className="font-semibold mb-2">Dietary Preferences:</h2>
+          <div className="flex-col items-center dietary-preferences  text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl ">
+            {currentWidth > 640 && (
+              <h2 className="font-semibold mb-2">Dietary Preferences:</h2>
+            )}
             {recipe.vegan ? (
               <div className="flex gap-2 items-center mb-2">
                 <LuVegan color={"#4CAF50"} size={24} />{" "}
@@ -113,20 +120,15 @@ export default function RecipeInfo() {
             )}
           </div>
         </div>
-        <img
-          src={recipe.image}
-          alt={recipe.title}
-          className="recipe-image w-full sm:w-3/4 h-auto mb-4 rounded-lg shadow-md"
-        />
       </div>
 
-      {currentWidth > 400 && (
+      {currentWidth > 640 && (
         <div className="recipe-summary mb-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           {parse(recipe.summary)}
         </div>
       )}
 
-      {currentWidth <= 400 && (
+      {currentWidth <= 640 && (
         <div className="mt-4">
           <button
             onClick={() => setShowSummary(!showSummary)}
@@ -151,7 +153,7 @@ export default function RecipeInfo() {
         </div>
       )}
 
-      {currentWidth > 400 && (
+      {currentWidth > 640 && (
         <div className="recipe-links mb-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           <a
             href={recipe.sourceUrl}
@@ -171,7 +173,7 @@ export default function RecipeInfo() {
           </a>
         </div>
       )}
-      {currentWidth > 400 && (
+      {currentWidth > 640 && (
         <div className="recipe-ingredients mb-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           <h3 className="text-xl sm:text-2xl font-semibold mb-2">
             Ingredients
@@ -186,7 +188,7 @@ export default function RecipeInfo() {
           </ul>
         </div>
       )}
-      {currentWidth <= 400 && (
+      {currentWidth <= 640 && (
         <div className="mt-4">
           <button
             onClick={() => setShowIngredients(!showIngredients)}
@@ -217,7 +219,7 @@ export default function RecipeInfo() {
         </div>
       )}
 
-      {currentWidth > 400 && (
+      {currentWidth > 640 && (
         <div className="recipe-instructions text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
           <h3 className="text-xl sm:text-2xl font-semibold mb-2">
             Instructions
@@ -236,7 +238,7 @@ export default function RecipeInfo() {
           </ol>
         </div>
       )}
-      {currentWidth <= 400 && (
+      {currentWidth <= 640 && (
         <div className="mt-4">
           <button
             onClick={() => setShowInstructions(!showInstructions)}

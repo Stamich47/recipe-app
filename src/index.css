@@ -145,3 +145,15 @@ body {
 .dropdown-toggle {
   cursor: pointer;
 }
+
+.dietary-preferences {
+  display: flex;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .dietary-preferences {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
