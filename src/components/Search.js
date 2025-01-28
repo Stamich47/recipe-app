@@ -47,7 +47,7 @@ export default function Search() {
   };
 
   return (
-    <div>
+    <div className="mb-2">
       <form onSubmit={handleSubmit}>
         <div className="search-container flex gap-2 justify-center">
           {onRecipeInfoPage && (
@@ -111,7 +111,7 @@ export default function Search() {
 
           <button
             type="submit"
-            className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
+            className="inline-flex justify-center items-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-500 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-10"
           >
             Search
           </button>
