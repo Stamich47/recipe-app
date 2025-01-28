@@ -62,9 +62,9 @@ export default function TrendingCard({ recipeInfoData }) {
           {isVegan && <LuVegan color={"#4CAF50"} className="vegan-icon" />}
         </div>
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-          <h1 className="text-white text-md font-semibold">
+          <div className="text-white text-base max-sm:text-sm  font-semibold">
             {recipeInfoData.title}
-          </h1>
+          </div>
         </div>
       </div>
     </div>

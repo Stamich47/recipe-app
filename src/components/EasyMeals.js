@@ -5,6 +5,7 @@ import TrendingCard from "./TrendingCard";
 export default function EasyMeals() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  // const [cheapMeals, setCheapMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [viewWidth, setViewWidth] = useState(window.innerWidth);
@@ -17,7 +18,7 @@ export default function EasyMeals() {
         const { data, error } = await supabase
           .from("search_results")
           .select("results")
-          .eq("search_term", "spaghetti")
+          .eq("search_term", "combined")
           .single();
 
         if (error) throw error;
@@ -32,6 +33,8 @@ export default function EasyMeals() {
     fetchData();
   }, []);
 
+  console.log(data);
+
   useEffect(() => {
     data.map((recipe) => {
       const ingredientCount = recipe.extendedIngredients.length;
@@ -44,6 +47,18 @@ export default function EasyMeals() {
       );
     });
   }, [data]);
+
+  // useEffect(() => {
+  //   data.map((recipe) => {
+  //     const cheapMeal = recipe.pricePerServing <= 200;
+  //     return (
+  //       cheapMeal &&
+  //       setCheapMeals((prev) =>
+  //         [...prev, recipe].sort(() => Math.random() - 0.5)
+  //       )
+  //     );
+  //   });
+  // }, [data]);
 
   return (
     <div>

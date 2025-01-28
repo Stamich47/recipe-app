@@ -29,7 +29,7 @@ export default function SearchResults() {
         setError(null);
         let allResults = [];
         let offset = 0;
-        const batchSize = 100;
+        const batchSize = 200;
 
         try {
           const storedResults = localStorage.getItem(searchTerm);
