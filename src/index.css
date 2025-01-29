@@ -171,3 +171,17 @@ body {
 .hide {
   display: none;
 }
+
+.back-button {
+  color: #006d77;
+  border-color: #006d77;
+  /* border-radius: 25%; */
+  border: none;
+  cursor: pointer;
+}
+
+.back-button:hover,
+.favorites-button:hover {
+  scale: 1.1;
+  transition: 0.3s;
+}

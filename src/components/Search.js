@@ -4,8 +4,6 @@ import { Dropdown } from "flowbite-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { saveFilterOptions } from "../slices/searchResultsSlice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,8 +16,6 @@ export default function Search() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
-  const onRecipeInfoPage = location.pathname === "/recipe-info";
 
   const options = ["Vegan", "Vegetarian", "Gluten Free", "Dairy Free"];
 
@@ -41,26 +37,10 @@ export default function Search() {
     setSearchTerm("");
   };
 
-  const getPreviousPage = () => {
-    const previousPage = location.state.from || "Home";
-    return previousPage;
-  };
-
   return (
     <div className="mb-2">
       <form onSubmit={handleSubmit}>
         <div className="search-container flex gap-2 justify-center">
-          {onRecipeInfoPage && (
-            <button
-              className="back-button flex items-center px-4 bg-gray-500 text-white rounded hover:bg-gray-600"
-              onClick={() => navigate(-1)}
-              aria-label={`Back to ${getPreviousPage()}`}
-              label={`Back to ${getPreviousPage()}`}
-            >
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
-          )}
-
           <label className="relative block flex-grow">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
               <svg
